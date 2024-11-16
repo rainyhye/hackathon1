@@ -10,7 +10,7 @@ body {
   color: #333; /* 글자 색상 */
 }
 
-.header2 {
+.header5 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,7 @@ body {
   font-size: 1.5em; /* 텍스트 크기 조정 */
 }
 
-.dashboard2 {
+.dashboard5 {
   display: flex; /* 카드 그리드를 감싸는 단순한 플렉스 컨테이너 */
   justify-content: center; /* 가운데 정렬 */
   align-items: flex-start; /* 상단 정렬 */
@@ -32,7 +32,7 @@ body {
   height: calc(100vh - 60px); /* 헤더와 진행률 바 제외한 화면 높이 */
   overflow-y: auto;
 }
-.card-grid2 {
+.card-grid5 {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 20px; /* 카드 사이 여백 */
@@ -42,7 +42,7 @@ body {
   box-sizing: border-box;
 }
 
-.card2 {
+.card5 {
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -56,7 +56,7 @@ body {
   margin-bottom: 10px; /* 카드 간 여백 추가 */
 }
 
-.card2-1 {
+.card5-1 {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@ body {
   grid-column: span 2; /* 세로로 긴 카드 */
 }
 
-.card2-2 {
+.card5-2 {
   height: 100%; /* 높이를 조정해서 모든 내용이 카드 안에 들어가도록 */
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@ body {
   grid-column: span 6; /* 세로로 긴 카드 */
   overflow: hidden; /* 카드 영역을 넘어가는 내용 숨김 */
 }
-.card2-3 {
+.card5-3 {
   height: 100%; /* 높이를 조정해서 모든 내용이 카드 안에 들어가도록 */
   display: flex;
   flex-direction: column;

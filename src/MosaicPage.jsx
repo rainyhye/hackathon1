@@ -31,7 +31,7 @@ function MosaicPage() {
   });
 
   // 모자이크 알고리즘 종류
-  const algorithms = ["YOLO", "Blur", "Pixelation", "DeepPrivacy"];
+  const algorithms = ["YOLO", "Mediapipe", "HOGDesciptor", "CNN"];
 
   // 알고리즘 선택 핸들러
   const handleAlgorithmChange = (algorithm) => {
@@ -77,41 +77,41 @@ function MosaicPage() {
     }
     return files;
   };
-  const generateblurFiles = () => {
+  const generateMediapipeFiles = () => {
     const files = [];
     const startDate = new Date("2024-11-01");
     for (let i = 1; i <= 50; i++) {
       const date = new Date(startDate);
       date.setDate(date.getDate() + (i % 17)); // 날짜 순환
       files.push({
-        name: `blur_file${i}.mp4`,
+        name: `Mediapipe_file${i}.mp4`,
         date: date.toISOString().split("T")[0], // YYYY-MM-DD 형식
       });
     }
     return files;
   };
-  const generatepixelFiles = () => {
+  const generateHogDescriptorFiles = () => {
     const files = [];
     const startDate = new Date("2024-11-01");
     for (let i = 1; i <= 50; i++) {
       const date = new Date(startDate);
       date.setDate(date.getDate() + (i % 17)); // 날짜 순환
       files.push({
-        name: `pixel_file${i}.mp4`,
+        name: `HOGDecriptor_file${i}.mp4`,
         date: date.toISOString().split("T")[0], // YYYY-MM-DD 형식
       });
     }
     return files;
   };
 
-  const generatedeepprivacyFiles = () => {
+  const generateCNNFiles = () => {
     const files = [];
     const startDate = new Date("2024-11-01");
     for (let i = 1; i <= 50; i++) {
       const date = new Date(startDate);
       date.setDate(date.getDate() + (i % 17)); // 날짜 순환
       files.push({
-        name: `deepprivacy_file${i}.mp4`,
+        name: `CNN_file${i}.mp4`,
         date: date.toISOString().split("T")[0], // YYYY-MM-DD 형식
       });
     }
@@ -120,9 +120,9 @@ function MosaicPage() {
 
   const algorithmFiles = {
     YOLO: generateYoloFiles(),
-    Blur: generateblurFiles(),
-    Pixelation: generatepixelFiles(),
-    DeepPrivacy: generatedeepprivacyFiles(),
+    Mediapipe: generateMediapipeFiles(),
+    HogDescriptor: generateHogDescriptorFiles(),
+    CNN: generateCNNFiles(),
   };
 
   // 필터링 로직 실행
@@ -206,7 +206,7 @@ function MosaicPage() {
       speedChartInstance = new Chart(ctx, {
         type: "bar", // 막대 그래프
         data: {
-          labels: Object.keys(averageSpeeds), // 알고리즘 이름들
+          labels: ["YOLO", "Mediapipe", "HOG Descriptor", "CNN"], // 원하는 레이블 // 알고리즘 이름들
           datasets: [
             {
               label: "평균 처리 속도 (ms)",
@@ -406,15 +406,15 @@ function MosaicPage() {
               <li className="recent-log-item">
                 <span className="log-date">2024-11-16</span>
                 <span className="log-description">
-                  Blur 파일 처리 완료{" "}
-                  <span className="log-file">(blur_file49.mp4)</span>
+                  Mediapipe 파일 처리 완료{" "}
+                  <span className="log-file">(Mediapipe_file49.mp4)</span>
                 </span>
               </li>
               <li className="recent-log-item">
                 <span className="log-date">2024-11-15</span>
                 <span className="log-description">
-                  DeepPrivacy 처리 완료{" "}
-                  <span className="log-file">(deepprivacy_file48.mp4)</span>
+                  CNN 처리 완료{" "}
+                  <span className="log-file">(CNN_file48.mp4)</span>
                 </span>
               </li>
             </ul>

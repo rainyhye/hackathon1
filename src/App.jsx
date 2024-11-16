@@ -11,7 +11,10 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import MosaicPage from "./MosaicPage"; // 모자이크 페이지
-import PdfPage from "./PdfPage";
+/*import PdfPage from "./PdfPage";
+import PdfPage1 from "./PdfPage1";
+import PdfPage2 from "./PdfPage2";
+import PdfPage3 from "./PdfPage3";*/
 Chart.register(...registerables);
 
 function App() {
@@ -42,8 +45,8 @@ function App() {
       console.error("PDF 파일을 열 수 없습니다:", error);
     }
   };*/
-  const handlePdfClick = () => {
-    navigate("/pdf");
+  const handlePdfClick = (path) => {
+    navigate(path); // 클릭한 PDF 아이콘의 경로로 이동
   };
 
   // 모자이크 버튼 클릭 핸들러
@@ -255,7 +258,7 @@ function App() {
           </button>
         </div>
         <div className="card risk-level drank">
-          <h2>위험 등급</h2>
+          <h2>이상 탐지</h2>
           <canvas ref={riskLevelRef}></canvas>
         </div>
         <div className="card day">
@@ -306,14 +309,42 @@ function App() {
         <div className="card risk-level2 ai">
           <h2>AI 컴플라이언스</h2>
           <div className="pdf-icons">
-            {[...Array(4)].map((_, index) => (
+            <div className="pdf-icon-container">
+              <p>2022 하반기</p>
               <img
-                key={index}
                 src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
-                alt={`PDF 아이콘 ${index + 1}`}
-                onClick={handlePdfClick}
+                alt="PDF 아이콘 1"
+                onClick={() => handlePdfClick("/pdf")}
+                style={{ cursor: "pointer", margin: "10px" }}
               />
-            ))}
+            </div>
+            <div className="pdf-icon-container">
+              <p>2023 상반기</p>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                alt="PDF 아이콘 2"
+                onClick={() => handlePdfClick("/pdf1")}
+                style={{ cursor: "pointer", margin: "10px" }}
+              />
+            </div>
+            <div className="pdf-icon-container">
+              <p>2023 하반기</p>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                alt="PDF 아이콘 3"
+                onClick={() => handlePdfClick("/pdf2")}
+                style={{ cursor: "pointer", margin: "10px" }}
+              />
+            </div>
+            <div className="pdf-icon-container">
+              <p>2024 상반기</p>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                alt="PDF 아이콘 4"
+                onClick={() => handlePdfClick("/pdf3")}
+                style={{ cursor: "pointer", margin: "10px" }}
+              />
+            </div>
           </div>
         </div>
         {/* "서버 상태"와 "부서별 위험 순위" 카드를 "AI 컴플라이언스" 카드 외부로 이동 */}
