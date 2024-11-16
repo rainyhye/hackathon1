@@ -9,6 +9,9 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { useNavigate } from "react-router-dom";
+import MosaicPage from "./MosaicPage"; // 모자이크 페이지
+import PdfPage from "./PdfPage";
 Chart.register(...registerables);
 
 function App() {
@@ -17,41 +20,35 @@ function App() {
   const dailyRiskRef = useRef(null);
   const weeklyRiskRef = useRef(null);
   const mosaicRef = useRef(null);
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   // PDF 아이콘 클릭 시 API 요청을 보내고 응답으로 받은 URL을 새 탭에서 여는 함수
-  const handlePdfClick = async (index) => {
-    try {
-      // 예시 API 요청 - 실제 API 엔드포인트를 사용해야 함
-      const response = await fetch(
-        `https://api.example.com/generate-pdf/${index}`
-        // Please modify this to the actual API endpoint URL: for example if the server is running on localhost:3000, it should be http://localhost:3000/some-routes/etc
-      );
-      const data = await response.json();
-      // the response in an object, check the api endpoint documentation. What are the object keys?
-      // For example data object could be { fileUrl: "http://example.com/somefile.pdf" } or { url: "http://example.com/somefile.pdf" } etc
-      // so you will change the fileUrl variable below to the actual key that contains the file URL
+  /*const handlePdfClick = async (index) => {
+    try {*/
+  // 예시 API 요청 - 실제 API 엔드포인트를 사용해야 함
+  /*const response = await fetch(
+        `https://api.example.com/generate-pdf/${index}`*/
+  // Please modify this to the actual API endpoint URL: for example if the server is running on localhost:3000, it should be http://localhost:3000/some-routes/etc
+  /*);
+      const data = await response.json();*/
+  // the response in an object, check the api endpoint documentation. What are the object keys?
+  // For example data object could be { fileUrl: "http://example.com/somefile.pdf" } or { url: "http://example.com/somefile.pdf" } etc
+  // so you will change the fileUrl variable below to the actual key that contains the file URL
 
-      // 응답에서 파일 URL을 받아 새 탭에서 열기
-      const fileUrl = data.fileUrl; // API 응답에서 파일 URL이 담긴 키
+  // 응답에서 파일 URL을 받아 새 탭에서 열기
+  /*const fileUrl = data.fileUrl; // API 응답에서 파일 URL이 담긴 키
       window.open(fileUrl, "_blank"); // 새 탭에서 열기
     } catch (error) {
       console.error("PDF 파일을 열 수 없습니다:", error);
     }
+  };*/
+  const handlePdfClick = () => {
+    navigate("/pdf");
   };
 
-  // API 요청을 통해 다른 페이지로 이동하는 함수
-  const handleMosaicClick = async () => {
-    try {
-      // 예시 API 요청 - 실제 API 엔드포인트를 사용해야 함
-      const response = await fetch("https://api.example.com/mosaic-page");
-      const data = await response.json();
-
-      // 응답에서 받은 URL로 새 탭에서 이동
-      const pageUrl = data.pageUrl; // API 응답에서 페이지 URL이 담긴 키
-      window.open(pageUrl, "_blank"); // 새 탭에서 열기
-    } catch (error) {
-      console.error("페이지를 열 수 없습니다:", error);
-    }
+  // 모자이크 버튼 클릭 핸들러
+  const handleMosaicClick = () => {
+    navigate("/mosaic");
   };
 
   useEffect(() => {
@@ -252,9 +249,9 @@ function App() {
           <div className="chart-container">
             <canvas ref={mosaicRef}></canvas>
           </div>
-          {/* 버튼을 차트 아래에 추가 */}
+          {/* 버튼을 차▶트 아래에 추가 */}
           <button onClick={handleMosaicClick} className="mosaic-button">
-            버튼
+            &#9654;
           </button>
         </div>
         <div className="card risk-level drank">
@@ -313,8 +310,8 @@ function App() {
               <img
                 key={index}
                 src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
-                alt="PDF 아이콘"
-                onClick={() => handlePdfClick(index)} // 각 아이콘 클릭 시 handlePdfClick 호출
+                alt={`PDF 아이콘 ${index + 1}`}
+                onClick={handlePdfClick}
               />
             ))}
           </div>
