@@ -42,7 +42,7 @@ function PdfPage1() {
   return (
     <div>
       <header className="header3">
-        <div>AI COMPLIENCE</div>
+        <div>AI COMPLIANCE</div>
       </header>
       <div className="sub-header3">2023 상반기</div>
       <div className="card3-grid3">
